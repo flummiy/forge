@@ -46,6 +46,10 @@ proc install() =
     if fileExists(fmt"{TMP}/{PKG}/depends"):
         for dep in readFile(fmt"{TMP}/{PKG}/depends").splitLines():
             let i = dep.strip()
+
+            if i.len == 0:
+                continue
+
             if fileExists(fmt"/var/forge/world/{i}"):
                 echo fmt"Dependency {i} is already installed, skipping."
                 continue
