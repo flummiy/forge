@@ -42,6 +42,17 @@ proc install() =
  
     discard execCmd(fmt"tar -xzvf {pkgsrc} -C {TMP}/{PKG}")
     echo "Source extracted."  
+    
+    if fileExists("{TMP}/{PKG}/depends"):
+        for i in readFile("{TMP}/{PKG}/depends").splitLines():
+            if fileExists(fmt"/var/forge/world/{i}"):
+                echo fmt"Dependency {i} is already installed, skipping."
+                continue
+            echo fmt"Installing dependency: {i}"
+            sleep(1)
+            discard execCmd(fmt"forge install {i}")
+    else:
+        echo "No dependencies found."
 
     echo SEPARATOR
 
@@ -75,3 +86,4 @@ elif OP == "remove":
     remove()
 else:
     echo fmt"Error: Unknown operation '{OP}'"
+
