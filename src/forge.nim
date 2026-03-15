@@ -1,4 +1,5 @@
-import os, osproc, strformat, httpclient, strutils, posix
+import std/[os, osproc, strformat, httpclient, strutils, posix]
+import zippy/tarballs
 
 const
   TMP = "/tmp/hypernova"
@@ -38,7 +39,7 @@ proc install(name: string) =
 
     echo "Extracting source.\n"
 
-    discard execCmd(fmt"tar -xzvf {pkgsrc} -C {TMP}/{name}")
+    extractAll(pkgsrc, workdir)
     echo "Source extracted."
 
     if fileExists(fmt"{TMP}/{name}/depends"):
