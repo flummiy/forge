@@ -2,7 +2,7 @@ import std/[os, osproc, strformat, httpclient, strutils, posix]
 import zippy/tarballs
 
 const
-  TMP = "/tmp/hypernova"
+  TMP = "/tmp/forge"
   SEPARATOR = "----------------------------------------"
 
 if paramCount() == 0:
@@ -18,7 +18,7 @@ elif paramCount() == 1:
     quit(1)
 
 let PARAMS = commandLineParams()
-let REPO = readFile("/var/hypernova/repo").strip()
+let REPO = readFile("/var/forge/repo").strip()
 let OP = PARAMS[0]
 let PKGS = PARAMS[1..^1]
 
