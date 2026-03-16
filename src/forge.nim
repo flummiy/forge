@@ -96,9 +96,9 @@ proc install(name: string) =
     status(fmt"Connecting to {REPO}...")
 
     let workdir = TMP / name
-    let pkgsrc = workdir / (name & ".tar.gz")
+    let pkgsrc = TMP / (name & ".tar.gz")
     let client = newHttpClient()
-    client.downloadFile(fmt"{REPO}/{name}.tar.gz", TMP / (name))
+    client.downloadFile(fmt"{REPO}/{name}.tar.gz", pkgsrc)
     success(fmt"Downloaded {name} from {REPO}")
 
     dimLine(SEPARATOR)
