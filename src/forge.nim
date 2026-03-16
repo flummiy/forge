@@ -108,8 +108,8 @@ proc install(name: string) =
     extractAll(pkgsrc, workdir)
     success("Source extracted.")
 
-    if fileExists(fmt"{TMP}/{name}/depends"):
-        for dep in lines(fmt"{TMP}/{name}/depends"):
+    if fileExists(fmt"{workdir}/{name}/depends"):
+        for dep in lines(fmt"{workdir}/{name}/depends"):
             let i = dep.strip()
 
             if i.len == 0:
