@@ -30,7 +30,9 @@ proc checkCanExecute*(): bool =
         return false
      if paramCount() == 0: 
         echo "No operation specified."
-        return false             
+        return false
+     else:
+        return true
 
 
 template printUsage*() =
