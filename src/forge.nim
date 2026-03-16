@@ -1,4 +1,4 @@
-import std/[os, osproc, strformat, httpclient, strutils, posix, re]
+import std/[os, osproc, strformat, httpclient, strutils, posix, re, times]
 import zippy/tarballs
 
 if getuid() != 0:
