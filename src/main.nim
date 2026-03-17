@@ -26,7 +26,7 @@ if not checkCanExecute():
 
 let
     CMDLINE     = commandLineParams()
-    REPO_DATA   = readFile(REPO_DIR).strip
+    REPO_DATA   = readFile(REPO_DIR).strip()
     OPERATION   = CMDLINE[0]
 
 
@@ -36,6 +36,8 @@ if OPERATION notin ["install", "remove", "list", "info"]:
 
 
 let PKGS = if paramCount() > 1: CMDLINE[1..^1] else: @[]
+
+let FIND_DIRS = ["/bin", "/sbin", "/usr/bin", "/usr/sbin", "/usr/local/bin", "/usr/lib", "/usr/local/lib", "/etc", "/usr/share", "/usr/include"]
 
 createDir(WORLD_DIR)
 
