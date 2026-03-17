@@ -7,6 +7,7 @@ bin           = @["main"]
 
 requires "nim >= 2.0.8"
 requires "zippy >= 0.10.19"
+requires "regex >= 0.26.3"
 
 import std/strformat
 

@@ -6,6 +6,7 @@
 # the copyright notice to indicate your changes
 import std/[posix, os, osproc, strformat, strutils, httpclient, re, times]
 import zippy/tarballs
+import regex
 import "console", "handler", "lock"
 
 
@@ -17,11 +18,7 @@ const
     WORLD_DIR   = "/var/forge/world"
     REPO_DIR    = "/var/forge/repo"
     LOCK_PATH   = TEMP_DIR / "forge.lock"
-    FIND_DIRS = @["/bin", "/sbin", "/usr/bin", "/usr/sbin", "/usr/include",
-                   "/usr/share", "/usr/lib", "/usr/lib64", "/usr/local/bin",
-                   "/usr/local/lib", "/etc", "/lib", "/lib64", "/var/forge/glibc_compat"]
-
-let PKG_RE = re("^[a-zA-Z0-9][a-zA0-9._-]*$")
+    PKG_RE      = re2"^[a-zA-Z0-9][a-zA0-9._-]*$"
 
 
 if not checkCanExecute():
